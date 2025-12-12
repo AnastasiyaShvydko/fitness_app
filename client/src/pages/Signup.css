@@ -1,0 +1,13 @@
+.signup-bg {
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+@media (min-width: 1200px) {
+  .signup-bg {
+    background-size: 100%; /* larger look on big screens */
+  }
+}

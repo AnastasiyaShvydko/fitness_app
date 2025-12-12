@@ -1,0 +1,7 @@
+.body-part {
+    cursor: pointer;
+    transition: fill 0.2s ease;
+  }
+  .body-part:hover {
+    fill: #dfe6ad; /* light blue on hover */
+  }

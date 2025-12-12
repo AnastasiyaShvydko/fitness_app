@@ -1,0 +1,59 @@
+.hero-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  z-index:5; width:44px; height:44px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  border:0; background:rgba(255,255,255,.92);
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  cursor:pointer; user-select:none;
+}
+.hero-nav--prev{ left:clamp(8px, 2vw, 24px); }
+.hero-nav--next{ right:clamp(8px, 2vw, 24px); }
+
+.hero-dots{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:clamp(10px, 2vh, 24px);
+  display:flex; gap:10px; z-index:5;
+}
+
+/* Кнопка-точка — кликабельная область больше самой иконки */
+.hero-dot{
+  width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+  padding:0; border:0; background:transparent; cursor:pointer; line-height:0;
+}
+
+.gallery-slide{ z-index:1; }
+.hero-nav, .hero-dots{ z-index:3; }
+
+.gallery-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none; /* prevent clicks on inactive slides */
+}
+
+.gallery-slide.active {
+  opacity: 1;
+  pointer-events: auto; /* allow clicks on active slide */
+}
+        .gallery-slide.fade.active { opacity: 1; }
+        .gallery-slide.slide { transform: translateX(100%); }
+        .gallery-slide.slide.active { transform: translateX(0); opacity: 1; }
+        .dot {
+          width: 8px; height: 8px; border-radius: 50%;
+          border: 0; background: rgba(255,255,255,.6);
+        }
+        .dot.active { background: #fff; transform: scale(1.2); }
+        .content-overlay {
+  pointer-events: auto; /* buttons inside can be clicked */
+}
+        @media (max-width: 768px) {
+          .gallery-slide h1 { font-size: 1.75rem; }
+        }
+
+@media (max-width:768px){
+  .hero-nav{ width:40px; height:40px; }
+}
