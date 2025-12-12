@@ -17,8 +17,8 @@ const searchRouter = require("./routes/search");
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://fitness-6p759rh60-ans-projects-dcd701c5.vercel.app"
-];
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 // ❶ ВЕБХУК ДОЛЖЕН БЫТЬ ЗАРЕГАН ДО json(), И РОВНО ПО ЭТОМУ ПУТИ
 app.post("/api/checkout/webhook",
