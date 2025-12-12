@@ -2,7 +2,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SignUp.css"; // Assuming you have a CSS file for styling
 
-export default function Signup() {
+export default function SignUp() {
   const [formData, setFormData] = useState({
     displayName: "",
     email: "",
