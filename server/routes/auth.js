@@ -13,7 +13,9 @@ router.get('/google',
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('http://localhost:5173'); // or your frontend URL
+  FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
+  res.redirect(FRONTEND_URL); // or your frontend URL
   });
 //
 
@@ -44,7 +46,9 @@ router.get('/logout', (req, res) => {
         secure: false,
       });// Important for cookie removal
     
-      res.redirect("http://localhost:5173");
+      const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
+      res.redirect(FRONTEND_URL);
     });
   });
 });
