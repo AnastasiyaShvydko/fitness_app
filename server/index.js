@@ -15,7 +15,10 @@ const app = express();
 
 const searchRouter = require("./routes/search");
 
-
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fitness-6p759rh60-ans-projects-dcd701c5.vercel.app"
+];
 
 // ❶ ВЕБХУК ДОЛЖЕН БЫТЬ ЗАРЕГАН ДО json(), И РОВНО ПО ЭТОМУ ПУТИ
 app.post("/api/checkout/webhook",
@@ -25,7 +28,13 @@ app.post("/api/checkout/webhook",
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // your frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());

@@ -4,7 +4,7 @@ const transporter = nodemailer.createTransport({
   host: process.env.VITE_SMTP_HOST,
   port: Number(process.env.VITE_SMTP_PORT || 587),
   secure: Number(process.env.VITE_SMTP_PORT) === 465,
-  auth: { user: process.env.VITE_SMTP_USER, pass: process.env.SMTP_PASS },
+  auth: { user: process.env.VITE_SMTP_USER, pass: process.env.VITE_SMTP_PASS },
   logger: true,  // optional: logs SMTP conversation
   debug: true,
 });
@@ -24,7 +24,7 @@ console.log("Preparing to send booking email to:", booking);
   `;
 
   await transporter.sendMail({
-    from: `"Your Fitness Studio" <${process.env.SMTP_FROM}>`,
+    from: `"Your Fitness Studio" <${process.env.VITE_SMTP_FROM}>`,
     to,
     subject,
     html,
