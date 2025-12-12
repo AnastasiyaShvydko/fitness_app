@@ -31,7 +31,7 @@ app.use(cors({
 app.use(express.json());
 app.use(session({
   name: "connect.sid",
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.VITE_SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -47,7 +47,7 @@ app.use(passport.session());
 app.use("/api/checkout", checkoutRouter);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.VITE_MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 

@@ -2,10 +2,10 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT || 587),
-  secure: Number(process.env.SMTP_PORT) === 465,
-  auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+  host: process.env.VITE_SMTP_HOST,
+  port: Number(process.env.VITE_SMTP_PORT || 587),
+  secure: Number(process.env.VITE_SMTP_PORT) === 465,
+  auth: { user: process.env.VITE_SMTP_USER, pass: process.env.VITE_SMTP_PASS },
 });
 
 const money = (n, cur) => `${cur} ${Number(n ?? 0).toFixed(2)}`;
@@ -53,7 +53,7 @@ async function sendOrderEmail({ to, subject = "Order confirmation", order }) {
 
   console.log("[email] to:", to, "subject:", subject, "html_len:", html.length);
   const info = await transporter.sendMail({
-    from: process.env.FROM_EMAIL, // e.g. "Your Name <your@gmail.com>"
+    from: process.env.VITE_FROM_EMAIL, // e.g. "Your Name <your@gmail.com>"
     to,
     subject,
     text,     // plaintext fallback → avoids “empty” emails

@@ -8,7 +8,7 @@ const { create, findById, findByIdAndUpdate } = require("../models/Order");
 const { sendOrderEmail } = require("../utils/email");
 
 const { startSession } = require("mongoose");
-//const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
 
 // util: маппинг в Stripe line_items
 function toStripeLineItems(items = [], currency = "CAD") {
@@ -35,7 +35,7 @@ router.post("/create-session", async (req, res) => {
     const line_items = toStripeLineItems(payload.items, payload.amounts?.currency);
 
     // 3) абсолютные URL
-    const BASE = process.env.CLIENT_URL || `${req.protocol}://${req.get("host")}`;
+    const BASE = process.env.VITE_CLIENT_URL || `${req.protocol}://${req.get("host")}`;
     const success_url = abs(BASE, `/thank-you?order=${order._id}`);
     const cancel_url  = abs(BASE, "/cart?cancel=1");
 
@@ -89,7 +89,7 @@ async function webhookHandler(req, res) {
     event = webhooks.constructEvent(
       req.body, // raw Buffer
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET
+      process.env.VITE_STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
     console.error("Webhook signature failed:", err.message);
