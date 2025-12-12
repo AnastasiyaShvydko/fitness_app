@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import AppNavbar from './components/Navbar';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/Login.jsx';
-import Signup from './pages/SignUp.jsx';
+import SignUp from './pages/SignUp.jsx';
 import Home from './pages/Home.jsx';
 import Store from './pages/Store.jsx';
 import Admin from './pages/Admin.jsx';
@@ -61,7 +61,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart cart = {cart} setCart={setCart}/>} />
         <Route path="/login" element={<Login setUser={setUser}/>} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/store" element={<Store />} />
         <Route path="/admin" element={user && user.isAdmin
       ? <Admin/>
