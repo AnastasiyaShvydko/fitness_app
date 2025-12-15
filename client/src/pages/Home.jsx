@@ -110,7 +110,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [slides, setSlides] = useState([]);
 useEffect(() => {
-  fetch("/api/slides").then(r => r.json()).then(setSlides).catch(()=>setSlides([]));
+  fetch(`${VITE_API_URL}/api/slides`).then(r => r.json()).then(setSlides).catch(()=>setSlides([]));
 }, []);
 
  const onSubmit = (e) => {
