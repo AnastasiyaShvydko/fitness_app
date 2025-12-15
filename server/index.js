@@ -17,8 +17,10 @@ const searchRouter = require("./routes/search");
 
 const allowedOrigins = [
   "http://localhost:5173",
-  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL, // https://fitness-app-ten-theta.vercel.app
 ].filter(Boolean);
+
+app.set("trust proxy", 1);
 
 // ❶ ВЕБХУК ДОЛЖЕН БЫТЬ ЗАРЕГАН ДО json(), И РОВНО ПО ЭТОМУ ПУТИ
 app.post("/api/checkout/webhook",
@@ -28,15 +30,14 @@ app.post("/api/checkout/webhook",
 
 // Middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
+  origin: (origin, cb) => {
+    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+    return cb(new Error("CORS blocked: " + origin));
   },
-  credentials: true
+  credentials: true,
 }));
+
+
 app.use(express.json());
 app.use(session({
   name: "connect.sid",
