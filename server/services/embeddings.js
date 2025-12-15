@@ -1,7 +1,7 @@
 //require("dotenv").config();
 
-const DIM = Number(process.env.VITE_EMBEDDING_DIM || 1536);
-const PROVIDER = (process.env.VITE_EMBEDDING_PROVIDER || "mock").toLowerCase();
+const DIM = Number(process.env.EMBEDDING_DIM || 1536);
+const PROVIDER = (process.env.EMBEDDING_PROVIDER || "mock").toLowerCase();
 
 /** Мок-эмбеддинг для dev: детерминированный вектор той же размерности */
 function mockEmbed(text) {
@@ -12,8 +12,8 @@ function mockEmbed(text) {
 }
 
 async function embedOpenAI(text) {
-  const apiKey = process.env.VITE_OPENAI_API_KEY;
-  if (!apiKey) throw new Error("VITE_OPENAI_API_KEY is required for VITE_EMBEDDING_PROVIDER=openai");
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) throw new Error("OPENAI_API_KEY is required for EMBEDDING_PROVIDER=openai");
   const resp = await fetch("https://api.openai.com/v1/embeddings", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${apiKey}` },

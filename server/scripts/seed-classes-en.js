@@ -40,8 +40,8 @@ const inferLevel = tags => {
 };
 
 (async () => {
-  const uri = process.env.VITE_MONGO_URI;
-  if (!uri) throw new Error("VITE_MONGO_URI is missing");
+  const uri = process.env.MONGO_URI;
+  if (!uri) throw new Error("MONGO_URI is missing");
   console.log("[seed] connecting:", uri);
   await mongoose.connect(uri);
 
