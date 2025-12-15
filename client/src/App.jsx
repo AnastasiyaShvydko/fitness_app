@@ -26,10 +26,14 @@ function App() {
   JSON.parse(localStorage.getItem("cart") || "[]")
 );
 
+const API = import.meta.env.VITE_API_URL;
+
+
+
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/auth/user', {
+    fetch(`${API}/auth/user`, {
       credentials: 'include',
     })
       .then((res) => {

@@ -3,7 +3,9 @@ import { useRef } from "react";
 import { CLOUD_NAME, UPLOAD_PRESET } from "../../config/cloudinary"; // Adjust the path as necessary
 
 export default function AdminAddProduct() {
+  const API = import.meta.env.VITE_API_URL;
   const variantFileRef = useRef(null);
+
   const baseImageFileRef = useRef(null);
   const [form, setForm] = useState({
     title: "",
@@ -101,7 +103,7 @@ const handleVariantImages = async (e) => {
     
     // Send form data to backend
     try {
-    const res = await fetch("http://localhost:5000/api/store/products", {
+    const res = await fetch(`${API}/api/store/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link,useParams } from "react-router-dom";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function ProductCardDetailed() {
   const [activeVariant, setActiveVariant] = useState(null);
   const [activeImg, setActiveImg] = useState(0);
@@ -14,7 +16,7 @@ export default function ProductCardDetailed() {
 );
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/store/products/${slug}`)
+    fetch(`${API}/api/store/products/${slug}`)
       .then(res => res.json())
       .then(setProduct)
       .catch(console.error);

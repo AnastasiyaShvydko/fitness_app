@@ -1,9 +1,10 @@
 // client/src/components/LoginButton.jsx
 import React from 'react';
 
+const API = import.meta.env.VITE_API_URL;
 const LoginButton = () => {
   const handleLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/google';
+    window.location.href = `${API}/auth/google`;
   };
 
   return (

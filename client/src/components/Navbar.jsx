@@ -8,10 +8,10 @@ function AppNavbar({ user, setUser, cart }) {
 
   const navigate = useNavigate();
   // const [user, setUser] = useState(null);
-
+  const API = import.meta.env.VITE_API_URL;
   useEffect(() => {
     // Check if user is logged in
-    fetch("http://localhost:5000/auth/user", {
+    fetch(`${API}/auth/user`, {
       credentials: "include", // important for cookies
     })
       .then((res) => res.json())
@@ -24,7 +24,7 @@ function AppNavbar({ user, setUser, cart }) {
   }, []);
 
   const handleLogout = async () => {
-    window.location.href = "http://localhost:5000/auth/logout";
+    window.location.href = `${API}/auth/logout`;
     // await fetch("/auth/logout", {
     //   method: "POST",
     //   credentials: "include",
