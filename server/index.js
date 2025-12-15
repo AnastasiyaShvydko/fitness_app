@@ -45,7 +45,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,        // true only on HTTPS
+    secure: true,        // true only on HTTPS
     httpOnly: true,
     sameSite: "lax",      // "none" + secure:true if on different domains over HTTPS
     maxAge: 24*60*60*1000,
@@ -55,6 +55,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api/checkout", checkoutRouter);
+app.use((req,res,next)=>{ console.log("Origin:", req.headers.origin); next(); });
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
