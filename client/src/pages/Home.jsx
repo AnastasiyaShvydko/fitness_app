@@ -6,6 +6,7 @@ import AnimatedHeroGallery from "../components/AnimatedHeroGallery";
 import SearchBar  from "../components/SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 import BodyMap from "../components/BodySelector";
+import { apiFetch } from "@/api/apiClient";
 
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 // const slides = [
@@ -110,7 +111,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [slides, setSlides] = useState([]);
 useEffect(() => {
-  fetch(`${VITE_API_URL}/api/slides`).then(r => r.json()).then(setSlides).catch(()=>setSlides([]));
+   apiFetch("/api/slides").then(r => r.json()).then(setSlides).catch(()=>setSlides([]));
 }, []);
 
  const onSubmit = (e) => {
