@@ -7,7 +7,7 @@ import SearchBar  from "../components/SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 import BodyMap from "../components/BodySelector";
 
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 // const slides = [
 //   {
 //     image: "https://res.cloudinary.com/dbh4o00x2/image/upload/v1756408426/meghan-holmes-buWcS7G1_28-unsplash_cla9qj.jpg",
