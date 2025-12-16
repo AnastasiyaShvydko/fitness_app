@@ -6,7 +6,7 @@ import AnimatedHeroGallery from "../components/AnimatedHeroGallery";
 import SearchBar  from "../components/SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 import BodyMap from "../components/BodySelector";
-import { apiFetch } from "@/api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 // const slides = [
