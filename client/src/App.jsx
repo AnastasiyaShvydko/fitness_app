@@ -18,7 +18,7 @@ import Book from './pages/Book.jsx';
 import ThankYou from './pages/ThankYou.jsx';
 import SearchPage from './pages/SearchPage.jsx';
 import ThankYouBooking from './pages/ThankYouBooking.jsx';
-import { apiFetch } from './api/apiClient.jsx';
+import apiFetch  from './api/apiClient.jsx';
 
 function App() {
   const [user, setUser] = useState(null);
