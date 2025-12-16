@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, ListGroup, InputGroup, Alert } from "react-bootstrap";
 
 import { uploadImages } from "../utils/upload";
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 async function onSlideImageSelect(files) {
   const [url] = await uploadImages(files);

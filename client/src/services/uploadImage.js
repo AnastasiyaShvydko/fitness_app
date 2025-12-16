@@ -1,4 +1,4 @@
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 export async function uploadImage(file) {
 const API = import.meta.env.VITE_API_URL;

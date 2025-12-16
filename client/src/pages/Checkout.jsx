@@ -1,7 +1,7 @@
 // src/pages/Checkout.jsx
 import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, ListGroup, Form, Button, Alert } from "react-bootstrap";
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 const CURRENCY = "CAD";
 const fmt = new Intl.NumberFormat("en-CA", { style: "currency", currency: CURRENCY });

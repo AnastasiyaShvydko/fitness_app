@@ -1,7 +1,7 @@
 // ProductCardDetailed.jsx
 import { useEffect, useMemo, useState } from "react";
 import { Link,useParams } from "react-router-dom";
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 const API = import.meta.env.VITE_API_URL;
 

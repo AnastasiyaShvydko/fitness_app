@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import ProductCard from "../components/ProductCard"; // путь к твоему компоненту
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 const API = import.meta.env.VITE_API_URL;
 export default function StorePage() {

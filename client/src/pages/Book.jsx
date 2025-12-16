@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Alert, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 
 const fmtTime = (hhmm) => {

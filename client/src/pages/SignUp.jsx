@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SignUp.css"; // Assuming you have a CSS file for styling
-import { apiFetch } from "../../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
