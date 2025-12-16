@@ -3,7 +3,7 @@ import { FaPowerOff } from "react-icons/fa";
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { fetchApi } from "../api/apiClient";
+import { apiFetch } from "../api/apiClient";
 function AppNavbar({ user, setUser, cart }) {
 
 
@@ -12,7 +12,7 @@ function AppNavbar({ user, setUser, cart }) {
   const API = import.meta.env.VITE_API_URL;
   useEffect(() => {
     // Check if user is logged in
-    fetchApi("/auth/user")
+    apiFetch("/auth/user")
       .then((res) => res.json())
       .then((data) => {
         //if (data.loggedIn) {
