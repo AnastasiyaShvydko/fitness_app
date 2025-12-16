@@ -111,7 +111,15 @@ export default function Home() {
   const navigate = useNavigate();
   const [slides, setSlides] = useState([]);
 useEffect(() => {
-   apiFetch("/api/slides").then(r => r.json()).then(setSlides).catch(()=>setSlides([]));
+  apiFetch("/api/slides")
+    .then((slides) => {
+      console.log("Slides from API:", slides); //  лог для проверки
+      setSlides(slides);
+    })
+    .catch((err) => {
+      console.error("Failed to load slides:", err);
+      setSlides([]);
+    });
 }, []);
 
  const onSubmit = (e) => {
