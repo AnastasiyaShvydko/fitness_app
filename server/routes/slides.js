@@ -8,6 +8,7 @@ router.get("/", async (req, res) => {
   try {
     if (req.query.all) {
       const rows = await Slide.find().sort({ order: 1, createdAt: -1 });
+      console.log("all slides count:", rows.length);
       return res.json(rows);
     }
     const rows = await Slide.findPublished();
