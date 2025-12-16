@@ -103,7 +103,7 @@ const handleVariantImages = async (e) => {
     
     // Send form data to backend
     try {
-    const res = await fetch(`${API}/api/store/products`, {
+    const res = await apiFetch("/api/store/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

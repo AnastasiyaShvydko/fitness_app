@@ -1,9 +1,11 @@
+import { apiFetch } from "../../api/apiClient";
+
 export async function uploadImage(file) {
 const API = import.meta.env.VITE_API_URL;
 
   const fd = new FormData();
   fd.append("file", file);
-  const res = await fetch(`${API}/api/upload/image`, {
+  const res = await apiFetch(`/api/upload/image`, {
     method: "POST",
     body: fd,
   });

@@ -1,6 +1,7 @@
 // src/pages/Checkout.jsx
 import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, ListGroup, Form, Button, Alert } from "react-bootstrap";
+import { apiFetch } from "../../api/apiClient";
 
 const CURRENCY = "CAD";
 const fmt = new Intl.NumberFormat("en-CA", { style: "currency", currency: CURRENCY });
@@ -136,7 +137,7 @@ async function placeOrder() {
 
   try {
     if (form.paymentMethod === "card") {
-      const res = await fetch("/api/checkout/create-session", {
+      const res = await apiFetch("/api/checkout/create-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -146,7 +147,7 @@ async function placeOrder() {
       window.location.href = url;              // переход на Stripe Hosted Checkout
     } else {
       // Pay on pickup (создаём заказ сразу)
-      const res = await fetch("/api/checkout/place-order", {
+      const res = await apiFetch("/api/checkout/place-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

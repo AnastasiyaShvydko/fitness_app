@@ -1,6 +1,7 @@
 // ProductCardDetailed.jsx
 import { useEffect, useMemo, useState } from "react";
 import { Link,useParams } from "react-router-dom";
+import { apiFetch } from "../../api/apiClient";
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -16,7 +17,7 @@ export default function ProductCardDetailed() {
 );
 
   useEffect(() => {
-    fetch(`${API}/api/store/products/${slug}`)
+    apiFetch(`/api/store/products/${slug}`)
       .then(res => res.json())
       .then(setProduct)
       .catch(console.error);

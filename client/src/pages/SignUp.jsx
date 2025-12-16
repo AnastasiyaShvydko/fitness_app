@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SignUp.css"; // Assuming you have a CSS file for styling
+import { apiFetch } from "../../api/apiClient";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      const res = await fetch("/auth/signup", {
+      const res = await apiFetch("/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

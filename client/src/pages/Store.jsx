@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import ProductCard from "../components/ProductCard"; // путь к твоему компоненту
+import { apiFetch } from "../../api/apiClient";
 
 const API = import.meta.env.VITE_API_URL;
 export default function StorePage() {
@@ -8,7 +9,7 @@ export default function StorePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API}/api/store/products`) // бекенд
+    apiFetch(`/api/store/products`) // бекенд
      .then((res) => res.json()) // Parse response as JSON
     .then((data) => {
      // Add this line

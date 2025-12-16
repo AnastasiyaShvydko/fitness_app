@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, ListGroup, InputGroup, Alert } from "react-bootstrap";
 
 import { uploadImages } from "../utils/upload";
+import { apiFetch } from "../../api/apiClient";
 
 async function onSlideImageSelect(files) {
   const [url] = await uploadImages(files);
@@ -56,7 +57,7 @@ const handleSlideImageUpload = async (e) => {
 
   // загрузка из БД
   useEffect(() => {
-    fetch("/api/slides")
+    apiFetch("/api/slides")
       .then((r) => r.json())
       .then(setSlides)
       .catch(() => setSlides([]));
@@ -156,7 +157,7 @@ const handleSlideImageUpload = async (e) => {
     if (!id) { setSlides((prev) => prev.filter((_, idx) => idx !== i)); return; }
     if (!confirm("Delete this slide?")) return;
     try {
-      const res = await fetch(`/api/slides/${id}`, { method: "DELETE" });
+      const res = await apiFetch(`/api/slides/${id}`, { method: "DELETE" });
       if (!res.ok && res.status !== 204) throw new Error(`Delete failed: ${res.status}`);
       setSlides((prev) => prev.filter((_, idx) => idx !== i));
       if (editing === i) resetForm();
@@ -187,12 +188,12 @@ const handleSlideImageUpload = async (e) => {
     // серверу: обновим order обоих
     try {
       await Promise.all([
-        fetch(`/api/slides/${a._id}/order`, {
+        apiFetch(`/api/slides/${a._id}/order`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ order: na }),
         }),
-        fetch(`/api/slides/${b._id}/order`, {
+        apiFetch(`/api/slides/${b._id}/order`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ order: nb }),

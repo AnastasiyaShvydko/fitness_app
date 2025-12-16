@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Login.css";
+import { apiFetch } from "../../api/apiClient";
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -14,7 +15,7 @@ const [password, setPassword] = useState("");
 
   const handleEmailLogin = async (e) => {
   e.preventDefault();
-  const res = await fetch(`${API}/auth/signin`, {
+  const res = await apiFetch(`/auth/signin`, {
     method: "POST",
     credentials: "include", // important for cookies
     headers: { "Content-Type": "application/json" },

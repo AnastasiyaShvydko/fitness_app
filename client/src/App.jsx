@@ -18,6 +18,7 @@ import Book from './pages/Book.jsx';
 import ThankYou from './pages/ThankYou.jsx';
 import SearchPage from './pages/SearchPage.jsx';
 import ThankYouBooking from './pages/ThankYouBooking.jsx';
+import { apiFetch } from './api/apiClient.jsx';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,9 +34,7 @@ const API = import.meta.env.VITE_API_URL;
 
 
   useEffect(() => {
-    fetch(`${API}/auth/user`, {
-      credentials: 'include',
-    })
+     apiFetch("/auth/user")
       .then((res) => {
         if (!res.ok) throw new Error('Not authenticated');
         return res.json();

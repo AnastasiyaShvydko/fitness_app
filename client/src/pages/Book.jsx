@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Alert, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { apiFetch } from "../../api/apiClient";
 
 
 const fmtTime = (hhmm) => {
@@ -65,7 +66,7 @@ export default function BookTrial() {
       setLoadingSlots(true); setError(""); setTime("");
       try {
         console.log("Fetching slots for date:", date);
-      const res = await fetch(`/api/slots/available?date=${date}`);
+      const res = await apiFetch(`/api/slots/available?date=${date}`);
 if (res.ok) {
   const json = await res.json();
   console.log("Fetched slots:", json);
@@ -120,7 +121,7 @@ if (res.ok) {
         source: "trial",
       };
 
-      const res = await fetch("/api/bookings", {
+      const res = await apiFetch("/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
